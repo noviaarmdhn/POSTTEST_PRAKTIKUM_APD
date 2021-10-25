@@ -1,0 +1,39 @@
+def KonversiSuhu(tipe):
+    #F > C
+    if tipe == "a":
+        suhu =float(input("Masukkan suhu °F = "))
+        a = (suhu - 32.0) * 5/9
+        print("Suhu = ", a, "°C")
+
+    #K > C
+    elif tipe == "b":
+        suhu =float(input("Masukkan suhu °K = "))
+        b = suhu - 273.0
+        print("Suhu = ", b, "°C")
+
+    #R ke C
+    elif tipe == "c":
+        suhu =float(input("Masukkan suhu °R = "))
+        c = (5/4) * suhu
+        print("Suhu = ", c, "°C")
+
+    else:
+        print("Tipe invalid.")
+
+
+i=0
+print("Program Konversi Suhu \n====================== \nPilih tipe konversi")
+pilihan = "a. Fahrenheit ke Celsius \nb. Kelvin ke Celsius \nc. Reamur ke Celsius"
+print(pilihan) 
+print("====================== \n ")
+while i==0:
+    tipe = input("Pilih tipe a, b, atau c? ")
+    KonversiSuhu(tipe)
+    ulang = input("\nHitung ulang? ya atau tidak = ")
+    if(ulang == "ya"):
+        i = 0
+    else:
+        i = 1
+        print("====================== \nProgram selesai. \nKeluar dari program.")
+
+
