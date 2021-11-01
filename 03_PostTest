@@ -1,0 +1,79 @@
+# Membuat program login sederhana
+
+# menu utama 
+def main_menu():
+    print("""
++==================================+
+|----- SIMPLE LOGIN PROGRAM -------|
++==================================+
+|       Pilih menu di bawah        |
++----------------------------------+
+| Menu aplikasi                    |
+| 1. Registrasi Akun               |
+| 2. Login Akun                    |
+| 3. Exit program                  |
++----------------------------------+
+""")
+        
+    # input pilih menu utama
+    pilihan = input("Pilih menu : " )
+ 
+    # pilihan menu
+    if pilihan == "1":
+        print(" \n+----------------------------------+")
+        regis()
+    elif pilihan == "2":
+        print(" \n+----------------------------------+")
+        login()
+    elif pilihan == "3":
+        print(" \n+----------------------------------+")
+        print("Program exit \n ")
+        exit()
+    else:
+        print("Masukkan pilihan yang benar.")
+        main_menu()
+
+
+#Dictionary
+user = {}
+akun = {"akun" : "nopenul", "pass" : "mantra"}
+
+#buat quit
+status = ""
+
+# buat pengguna baru
+def regis():
+    login_f = str(input("Masukkan nama: "))
+    if login_f in akun and user:
+        print ("Nama untuk login sudah tersimpan, pilih menu login!")
+        main_menu()
+
+    else:
+        pass_f = input("Buat password: ")
+        user[login_f] = pass_f
+        print("Selamat kamu adalah pengguna baru!")     
+
+def login():
+    i = 3
+    while i >= 1:
+        #Login if old user
+        uname = input("Masukkan nama pengguna: ")
+        pw = input("Masukkan password: ")
+        if uname in user and user[uname] == pw:
+            print("Login berhasil!")
+            break
+        elif uname in akun["akun"] and akun["pass"] == pw:
+            print("Login berhasil!")
+            break
+
+        else:
+            i -= 1
+            print("Gagal login, sisa percobaan login adalah :", i, "x \n ")
+
+
+#Quits Program
+if status == "q":
+    print("Program exit.")
+    exit()
+while status !="q":
+    main_menu()
