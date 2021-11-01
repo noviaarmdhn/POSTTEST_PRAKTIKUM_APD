@@ -1,0 +1,218 @@
+def login():
+    print("""
++==================================+
+|---------- LOGIN KASIR -----------|
++==================================+
+""")
+    print(input("Masukkan username : "))
+    password = input("Password : ")
+ 
+    if password == "mantra":
+        print("Login berhasil.\n")
+        main_menu()
+    else:
+        print("Login gagal coba lagi..")
+        login()
+    
+
+
+# menu utama 
+def main_menu():
+    print("""
++==================================+
+|------ MAIN MENU APLIKASI --------|
++==================================+
+| Selamat datang di Waroenk Makan  |
++----------------------------------+
+| Menu aplikasi                    |
+| 1. Lihat list diskon             |
+| 2. Pilih menu                    |
+| 3. Exit program                  |
++----------------------------------+
+""")
+        
+    # input pilih menu utama
+    pilihan = input("Pilih menu : ")
+ 
+    # pilihan menu
+    if pilihan == "1":
+        list_diskon()
+    elif pilihan == "2":
+        list_menu()
+    elif pilihan == "3":
+        print("Program exit")
+        exit()
+    else:
+        print("Masukkan pilihan yang benar.")
+        main_menu()
+
+#disc
+def list_diskon():
+    print("""
++=============================================+
+|--------List Diskon di Waroenk Makan---------|
++=============================================+
+| 1. Setiap Pembelian 3 Minuman diskon 10%    |
+| 2. Setiap Pembelian 2 Makanan diskon 5%     |
+| 3. Pembayaran melalui E-money diskon 5%     |
+| 4. Weekend diskon 5%                        |
+| 5. Weekdays diskon 10%                      |
++---------------------------------------------+
+""")
+    main_menu()
+
+# fungsi kasir 
+def list_menu():
+    print("""
++===================================+
+|          WAROENK MAKAN            |
++===================================+
+|  No. |       Menu       |  Harga  |
++------+------------------+---------+
+|   1  | Nasi Kulit       |  12000  |
+|   2  | Ayam Geprek      |  12000  |
+|   3  | Ayam Penyet      |  12000  |
+|   4  | Bakso            |  12000  |
+|   5  | Mie Ayam         |  12000  |
+|   6  | Air Mineral      |   5000  |
+|   7  | Es Teh           |   5000  |
+|   8  | Es Jeruk         |   5000  |
+|   9  | Es Sirup         |   5000  |
+|  10  | Teh Tarik        |   5000  |
++===================================+
+""")
+  
+    pesan = str(input("Masukkan angka menu : "))
+    jumlahpesan = int(input("Jumlah Beli : "))
+    hari = str(input("Masukkan hari : (weekend/weekdays)"))
+    emoney = str(input("Menggunakan e-money : (y/t)"))
+    if pesan == 1 or 2 or 3 or 4 or 5:
+        listnama = 'Makanan'
+        harga = (12000 * jumlahpesan)    
+        # 5%
+        if jumlahpesan < 2 and hari == 'weekend' and emoney == 't':
+            diskon = int(harga * 5/100)
+            totalharga = int(harga - diskon)      
+        # 10% 
+        elif jumlahpesan < 2 and hari == 'weekdays' and emoney == 't':
+            diskon = int(harga * 10/100)
+            totalharga = int(harga - diskon)
+        elif (jumlahpesan > 2 or jumlahpesan == 2) and hari == 'weekend' and emoney == 't':
+            diskon = int(harga * 10/100)
+            totalharga = int(harga - diskon)
+        elif jumlahpesan < 2 and emoney == 'y' and hari == 'weekend' :
+            diskon = int(harga * 10/100)
+            totalharga = int(harga - diskon)
+        # 15%
+        elif (jumlahpesan > 2 or jumlahpesan == 2) and hari == 'weekdays' and emoney == 't':
+            diskon = int(harga * 15/100)
+            totalharga = int(harga - diskon)
+        elif jumlahpesan < 2 and hari == 'weekdays' and emoney == 'y':
+            diskon = int(harga * 15/100)
+            totalharga = int(harga - diskon)
+        elif (jumlahpesan > 2 or jumlahpesan == 2) and emoney == 'y' and hari == 'weekend' :
+            diskon = int(harga * 15/100)
+            totalharga = int(harga - diskon)
+        # 20%
+        elif (jumlahpesan > 2 or jumlahpesan == 2) and hari == 'weekdays' and emoney == 'y':
+            diskon = int(harga * 20/100)
+            totalharga = int(harga - diskon)
+
+        else:
+            diskon =(0)
+            totalharga = int(harga)
+
+
+    if pesan == 6 or 7 or 8 or 9 or 10:
+        listnama = 'Minuman'
+        harga = (5000 * jumlahpesan)    
+        
+        # 5%
+        if jumlahpesan < 3 and hari == 'weekend':
+            diskon = int(harga * 5/100)
+            totalharga = int(harga - diskon)      
+        
+        # 10%
+        elif jumlahpesan < 3 and hari == 'weekdays' :
+            diskon = int(harga * 10/100)
+            totalharga = int(harga - diskon)
+        
+        elif (jumlahpesan > 3 or jumlahpesan == 3) and hari == 'weekend' and hari == 'weekend':
+            diskon = int(harga * 15/100)
+            totalharga = int(harga - diskon)
+        
+        elif jumlahpesan < 3 and hari == 'weekend' and emoney == 'y':
+            diskon = int(harga * 10/100)
+            totalharga = int(harga - diskon)
+        
+        # 15%
+        elif (jumlahpesan > 3 or jumlahpesan == 3) and hari == 'weekdays':
+            diskon = int(harga * 20/100)
+            totalharga = int(harga - diskon)
+        
+        elif jumlahpesan < 3 and hari == 'weekdays' and emoney == 'y':
+            diskon = int(harga * 15/100)
+            totalharga = int(harga - diskon)
+
+        elif (jumlahpesan > 3 or jumlahpesan == 3) and hari == 'weekend' and emoney == 'y':
+            diskon = int(harga * 20/100)
+            totalharga = int(harga - diskon)
+        
+        # 20%
+        elif (jumlahpesan > 3 or jumlahpesan == 3) and hari == 'weekdays' and emoney == 'y':
+            diskon = int(harga * 25/100)
+            totalharga = int(harga - diskon)
+
+        else:
+            diskon =(0)
+            totalharga = int(harga)
+            
+    else:
+      listnama = "-"
+      harga = "-"
+      diskon = "-"
+      totalharga = "-"
+      
+    print("""
++---------------------------------+
+|---------STRUK PEMBELIAN---------|
++---------------------------------+
+ Menu         : {}
+ Jumlah Pesan : {}
+ Harga        : {}
+ Diskon       : {}
++---------------------------------+
+ Jumlah Bayar : {}
++---------------------------------+
+      """.format(listnama, jumlahpesan, 
+      harga, diskon, totalharga))
+    
+    counter_kasir()
+    
+# counter kasir
+def counter_kasir():
+  
+    counter = input("Belanja lagi ? (y/t) : ")
+    if counter == "y":
+        list_menu()
+     
+    elif counter == "t":
+        tanya()
+     
+    else:
+        print("Input program salah! harap ulangi.")
+
+def tanya():
+    tanya = input("Kembali ke menu..? (y/t)")
+    if tanya == "y":
+        main_menu()
+    elif tanya == "t":
+        print("Terima kasih, jangan lupa datang lagi ya:)")
+        exit()
+    else:
+        print("Input salah")
+        print("Masukkan input dengan benar")
+
+# main program
+if __name__=="__main__":
+    login()
