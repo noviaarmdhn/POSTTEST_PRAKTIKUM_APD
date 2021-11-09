@@ -1,0 +1,92 @@
+#Program List Menu
+
+list_menu = [
+    ['Nasi Kulit', 12000], ['Ayam Geprek', 12000], ['Ayam Penyet', 12000], ['Bakso', 12000], ['Mie Ayam', 12000], ['Air Mineral', 5000], ['Es Teh', 5000], ['Es Jeruk', 5000], ['Es Sirup', 5000], ['Teh Tarik', 5000]
+    ]
+
+#TAMBAH
+def tambah():
+    whr = input(str("Ingin menambah di akhir?  y/t : "))
+    if whr == 'y':
+        add = input("Masukkan nama menu : ")
+        pr = input("Harga : ")
+        ol = '[' +add+ ', ' + pr + ']'
+        list_menu.append(ol)
+        print(list_menu)
+        print("--Menu baru telah ditambahkan--")
+
+    elif whr == 't':
+        add = input(str("Masukkan nama menu : "))
+        pr = input("Harga : ")
+        all = '[' +add+ ', ' + pr + ']'
+        index = int(input("Masukkan index : "))
+        list_menu.insert(index, all)
+        print(list_menu)
+        print("--Menu baru telah ditambahkan--")
+
+    else:
+        print("Masukkan kode yang benar")
+
+#HAPUS
+def hapus():
+    whr = input(str("Apakah ingin menghapus menu terakhir?  y/t : "))
+    if whr == 't':
+        index = int(input("Masukkan index : "))
+        del list_menu[index]
+        print(list_menu)
+        print("--Menu telah dihapus--")
+    
+    elif whr == 'y':
+        list_menu.pop()
+        print(list_menu)
+        print("--Menu telah dihapus--")
+    
+    else:
+        print("Masukkan kode yang benar")
+
+
+#EDIT
+def edit():
+    index = int(input("Masukkan index : "))
+    add = input(str("Masukkan nama menu : "))
+    pr = input("Harga : ")
+    all = '[' +add+ ', ' + pr + ']'
+    list_menu[index] = all
+    print(list_menu)
+    print("--Menu telah diubah--")
+
+
+
+def menu():
+    print("""
++============================================+
+|            Pilih menu di bawah             |
++============================================+
+| 1. Lihat list menu di Waroenk makan        |
+| 2. Menambah menu makanan dan minuman       |
+| 3. Mengubah data menu makanan dan minuman  |
+| 4. Menghapus data menu makanan dan minuman |
+| 5. Keluar dari program                     |
++============================================+
+""")
+
+    kode = input("Masukkan kode : ")
+    if kode == '1':
+        print(""" \n
+List menu di Waroenk makan 
++==========================+""")
+        print(list_menu)
+    elif kode == '2':
+        tambah()
+    elif kode == '3':
+        edit()
+    elif kode == '4':
+        hapus()
+    elif kode == '5':
+        print("Keluar dari program.")
+        exit()
+    else:
+        print("Masukkan kode yang benar!")
+
+while (True):
+    menu()
