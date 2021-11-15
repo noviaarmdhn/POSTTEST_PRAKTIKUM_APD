@@ -1,0 +1,79 @@
+#TAMBAH
+def tambah():
+    whr = input(str("Ingin menambah menu?  y/t : "))
+    if whr == 'y':
+        cod = input("Masukkan kode : (ex: Kode 1) ")
+        add = input("Masukkan nama menu : ")
+        pr = input("Harga : ")
+        all = {cod : add + ' ' + pr}
+        menu.update(all)
+        print(menu)
+        print("--Menu baru telah ditambahkan--")
+
+    elif whr == 't':
+        print(menu)
+
+    else:
+        print("Masukkan kode yang benar")
+
+#HAPUS
+def hapus():
+    whr = input(str("Apakah ingin menghapus seluruh menu?  y/t : "))
+    if whr == 't':
+        apus = str(input("Masukkan kode menu yang ingin dihapus : (ex: Kode 1) "))
+        del menu[apus]
+        print(menu)
+        print("--Menu telah dihapus--")
+    
+    elif whr == 'y':
+        menu.clear()
+        print(menu)
+
+    else:
+        print("Masukkan kode yang benar")
+
+#EDIT
+def edit():
+    kode = str(input("Masukkan kode menu yang ingin diubah : (ex: Kode 1) "))
+    add = input(str("Masukkan nama menu : "))
+    pr = input("Harga : ")
+    all = {add + ' ' + pr}
+    menu[kode] = all
+    print(menu)
+    print("--Menu telah diubah--")
+
+def main_menu():
+    print("""
++============================================+
+|      Selamat datang di Waroenk Makan       |
++============================================+
+|            Pilih menu di bawah             |
++============================================+
+| 1. Lihat list menu di Waroenk makan        |
+| 2. Menambah menu makanan dan minuman       |
+| 3. Mengubah data menu makanan dan minuman  |
+| 4. Menghapus data menu makanan dan minuman |
+| 5. Keluar dari program                     |
++============================================+
+""")
+
+    kode = input("Masukkan kode : ")
+    if kode == '1':
+        print(""" \n
+List menu di Waroenk makan 
++==========================+""")
+        print(menu)
+    elif kode == '2':
+        tambah()
+    elif kode == '3':
+        edit()
+    elif kode == '4':
+        hapus()
+    elif kode == '5':
+        print("Keluar dari program.")
+        exit()
+    else:
+        print("Masukkan kode yang benar!")
+
+while (True):
+    main_menu() 
